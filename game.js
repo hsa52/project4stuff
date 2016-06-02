@@ -34,6 +34,7 @@ title.on('mousedown',mousehandler);
 function mousehandler(){
     world.visible=1;
     titlescreen.visible=0;
+    startingsound.play();
 
 }
 titlescreen.addChild(title);
@@ -100,6 +101,8 @@ PIXI.loader
     .add("Hit_Hurt.wav")
     .add("jumping.wav")
     .add("winner.wav")
+    .add("starting.wav")
+    .add("coinpick.wav")
 
     .load(ready);
 var frames=[];
@@ -111,7 +114,10 @@ var start;
 var cast;
 var hithurt;
 var jumping;
+var starting;
+var boss1;
 var endingsound;
+var mushroom1;
 var mushroom2;
 var mushroom3;
 var mushroom4;
@@ -124,7 +130,8 @@ function ready(){
     hithurt =PIXI.audioManager.getAudio("Hit_Hurt.wav");
     jumping =PIXI.audioManager.getAudio("jumping.wav");
     endingsound =PIXI.audioManager.getAudio("winner.wav");
-
+    startingsound =PIXI.audioManager.getAudio("starting.wav");
+    coinpick =PIXI.audioManager.getAudio("coinpick.wav");
 
     for (i=1;i<=6;i++){
         frames.push(PIXI.Texture.fromFrame("runner"+i+".png"));
@@ -140,6 +147,22 @@ function ready(){
      cast = world.getObject("castle");
      mushroom2 = world.getObject("mushroom2");
      mushroom3 = world.getObject("mushroom3");
+     mushroom1 = world.getObject("mushroom1");
+     mushroom6 = world.getObject("mushroom6");
+     mushroom7 = world.getObject("mushroom7");
+     mushroom8 = world.getObject("mushroom8");
+     mushroom9 = world.getObject("mushroom9");
+     boss1 = world.getObject("boss");
+     coin = world.getObject("coin");
+     coin1 = world.getObject("coin1");
+     coin2 = world.getObject("coin2");
+     coin3 = world.getObject("coin3");
+     coin4 = world.getObject("coin4");
+     coin5 = world.getObject("coin5");
+     coin6 = world.getObject("coin6");
+     coin7 = world.getObject("coin7");
+
+
      mushroom4 = world.getObject("mushroom4");
      mushroom = world.getObject("mushroom");
      princess = world.getObject("mushroom5");
@@ -151,6 +174,63 @@ function ready(){
     prin.position.y=princess.y;
     prin.anchor.x = 0.5;
     prin.anchor.y = .3;
+
+    b = PIXI.Texture.fromImage("coin.png");
+    coiny = new PIXI.Sprite(b);
+    coiny.position.x=coin.x;
+    coiny.position.y=coin.y;
+    coiny.anchor.x = 0.5;
+    coiny.anchor.y = .3;
+
+    b1 = PIXI.Texture.fromImage("coin.png");
+    coiny1 = new PIXI.Sprite(b);
+    coiny1.position.x=coin1.x;
+    coiny1.position.y=coin1.y;
+    coiny1.anchor.x = 0.5;
+    coiny1.anchor.y = .3;
+
+    b2 = PIXI.Texture.fromImage("coin.png");
+    coiny2 = new PIXI.Sprite(b);
+    coiny2.position.x=coin2.x;
+    coiny2.position.y=coin2.y;
+    coiny2.anchor.x = 0.5;
+    coiny2.anchor.y = .3;
+
+    b3 = PIXI.Texture.fromImage("coin.png");
+    coiny3 = new PIXI.Sprite(b);
+    coiny3.position.x=coin3.x;
+    coiny3.position.y=coin3.y;
+    coiny3.anchor.x = 0.5;
+    coiny3.anchor.y = .3;
+
+    b4 = PIXI.Texture.fromImage("coin.png");
+    coiny4 = new PIXI.Sprite(b);
+    coiny4.position.x=coin4.x;
+    coiny4.position.y=coin4.y;
+    coiny4.anchor.x = 0.5;
+    coiny4.anchor.y = .3;
+
+    b5 = PIXI.Texture.fromImage("coin.png");
+    coiny5 = new PIXI.Sprite(b);
+    coiny5.position.x=coin5.x;
+    coiny5.position.y=coin5.y;
+    coiny5.anchor.x = 0.5;
+    coiny5.anchor.y = .3;
+
+    b6 = PIXI.Texture.fromImage("coin.png");
+    coiny6 = new PIXI.Sprite(b);
+    coiny6.position.x=coin6.x;
+    coiny6.position.y=coin6.y;
+    coiny6.anchor.x = 0.5;
+    coiny6.anchor.y = .3;
+
+    b7 = PIXI.Texture.fromImage("coin.png");
+    coiny7 = new PIXI.Sprite(b);
+    coiny7.position.x=coin7.x;
+    coiny7.position.y=coin7.y;
+    coiny7.anchor.x = 0.5;
+    coiny7.anchor.y = .3;
+
 
     r = PIXI.Texture.fromImage("mushroom1.png");
     //princess sprite
@@ -177,6 +257,22 @@ function ready(){
     mush2.anchor.x = 0.5;
     mush2.anchor.y = .3;
 
+    t= PIXI.Texture.fromImage("mushroom1.png");
+    mush1= new PIXI.Sprite(t);
+    mush1.position.x=mushroom1.x;
+    mush1.position.y=mushroom1.y;
+    mush1.anchor.x = 0.5;
+    mush1.anchor.y = .3;
+
+
+    k = PIXI.Texture.fromImage("boss.png");
+    boss = new PIXI.Sprite(k);
+    boss.position.x=boss1.x;
+    boss.position.y=boss1.y;
+    boss.anchor.x = 0.5;
+    boss.anchor.y = .3;
+
+
     q= PIXI.Texture.fromImage("mushroom1.png");
     mush= new PIXI.Sprite(q);
     mush.position.x=mushroom.x;
@@ -184,12 +280,34 @@ function ready(){
     mush.anchor.x = 0.5;
     mush.anchor.y = .3;
 
-    t= PIXI.Texture.fromImage("mushroom1.png");
-    mush1= new PIXI.Sprite(t);
-    mush1.position.x=mushroom.x;
-    mush1.position.y=mushroom.y;
-    mush1.anchor.x = 0.5;
-    mush1.anchor.y = .3;
+    q1= PIXI.Texture.fromImage("mushroom1.png");
+    mush6= new PIXI.Sprite(q);
+    mush6.position.x=mushroom6.x;
+    mush6.position.y=mushroom6.y;
+    mush6.anchor.x = 0.5;
+    mush6.anchor.y = .3;
+
+    q2= PIXI.Texture.fromImage("mushroom1.png");
+    mush7= new PIXI.Sprite(q);
+    mush7.position.x=mushroom7.x;
+    mush7.position.y=mushroom7.y;
+    mush7.anchor.x = 0.5;
+    mush7.anchor.y = .3;
+
+    q3= PIXI.Texture.fromImage("mushroom1.png");
+    mush8= new PIXI.Sprite(q);
+    mush8.position.x=mushroom8.x;
+    mush8.position.y=mushroom8.y;
+    mush8.anchor.x = 0.5;
+    mush8.anchor.y = .3;
+
+    q4= PIXI.Texture.fromImage("mushroom1.png");
+    mush9= new PIXI.Sprite(q);
+    mush9.position.x=mushroom9.x;
+    mush9.position.y=mushroom9.y;
+    mush9.anchor.x = 0.5;
+    mush9.anchor.y = .3;
+
 
     //main playable character
     blob = new PIXI.extras.MovieClip(frames);
@@ -219,8 +337,23 @@ function ready(){
     entity_layer.addChild(mush4);
     entity_layer.addChild(mush3);
     entity_layer.addChild(mush2);
+    entity_layer.addChild(mush1);
+    entity_layer.addChild(boss)
+    entity_layer.addChild(coiny)
+    entity_layer.addChild(coiny1)
+    entity_layer.addChild(coiny2)
+    entity_layer.addChild(coiny3)
+    entity_layer.addChild(coiny4)
+    entity_layer.addChild(coiny5)
+    entity_layer.addChild(coiny6)
+    entity_layer.addChild(coiny7)
     entity_layer.addChild(mush)
+    entity_layer.addChild(mush6)
+    entity_layer.addChild(mush7)
+    entity_layer.addChild(mush8)
+    entity_layer.addChild(mush9)
     entity_layer.addChild(prin);
+
 
 
     animate();
@@ -275,6 +408,45 @@ document.addEventListener("keydown",function (e) {
         playAgain.visible=1;
         hithurt.play();
 
+    }
+    if(Math.abs(blob.position.y-coiny.position.y)<15&& Math.abs(blob.position.x-coiny.position.x)<15&& (coiny.visible=1)) {
+        coinpick.play();
+        coiny.visible=0;
+    }
+
+    if(Math.abs(blob.position.y-coiny1.position.y)<10&& Math.abs(blob.position.x-coiny1.position.x)<10) {
+        coiny1.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny2.position.y)<10&& Math.abs(blob.position.x-coiny2.position.x)<10) {
+        coiny2.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny3.position.y)<10&& Math.abs(blob.position.x-coiny3.position.x)<10) {
+        coiny3.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny4.position.y)<10&& Math.abs(blob.position.x-coiny4.position.x)<10) {
+        coiny4.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny5.position.y)<10&& Math.abs(blob.position.x-coiny5.position.x)<10) {
+        coiny5.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny6.position.y)<10&& Math.abs(blob.position.x-coiny6.position.x)<10) {
+        coiny6.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny7.position.y)<10&& Math.abs(blob.position.x-coiny7.position.x)<10) {
+        coiny7.visible=0;
+        coinpick.play();
     }
 
 
