@@ -17,7 +17,7 @@ endWin.visible=0;
 endLose.visible=0;
 
 
-var gameTitle = new PIXI.Text("Project 3: Tiles\nGreasers and Mushrooms is what this game is about");
+var gameTitle = new PIXI.Text("Project 4: Final\nGreasers & Mushrooms\n They're back and mushroomier than ever");
 gameTitle.anchor.x=.5;
 gameTitle.anchor.y=.5;
 gameTitle.position.x=360;
@@ -103,7 +103,8 @@ PIXI.loader
     .add("winner.wav")
     .add("starting.wav")
     .add("coinpick.wav")
-
+    .add("Powerup.wav")
+    .add("mushroomdeath.wav")
     .load(ready);
 var frames=[];
 var frames2=[];
@@ -116,6 +117,7 @@ var hithurt;
 var jumping;
 var starting;
 var boss1;
+var comb1;
 var endingsound;
 var mushroom1;
 var mushroom2;
@@ -132,7 +134,8 @@ function ready(){
     endingsound =PIXI.audioManager.getAudio("winner.wav");
     startingsound =PIXI.audioManager.getAudio("starting.wav");
     coinpick =PIXI.audioManager.getAudio("coinpick.wav");
-
+    Powerup =PIXI.audioManager.getAudio("Powerup.wav");
+    mushroomdeath =PIXI.audioManager.getAudio("mushroomdeath.wav");
     for (i=1;i<=6;i++){
         frames.push(PIXI.Texture.fromFrame("runner"+i+".png"));
 
@@ -152,6 +155,23 @@ function ready(){
      mushroom7 = world.getObject("mushroom7");
      mushroom8 = world.getObject("mushroom8");
      mushroom9 = world.getObject("mushroom9");
+     mushroom10 = world.getObject("mushroom10");
+     mushroom11 = world.getObject("mushroom11");
+     mushroom12 = world.getObject("mushroom12");
+     mushroom13 = world.getObject("mushroom13");
+     mushroom14 = world.getObject("mushroom14");
+     mushroom15 = world.getObject("mushroom15");
+     mushroom16 = world.getObject("mushroom16");
+     mushroom17 = world.getObject("mushroom17");
+     mushroom18 = world.getObject("mushroom18");
+     mushroom19 = world.getObject("mushroom19");
+     mushroom20 = world.getObject("mushroom20");
+     mushroom21 = world.getObject("mushroom21");
+     mushroom22 = world.getObject("mushroom22");
+     mushroom23 = world.getObject("mushroom23");
+     mushroom24 = world.getObject("mushroom24");
+     mushroom25 = world.getObject("mushroom25");
+     mushroom26 = world.getObject("mushroom26");
      boss1 = world.getObject("boss");
      coin = world.getObject("coin");
      coin1 = world.getObject("coin1");
@@ -161,8 +181,7 @@ function ready(){
      coin5 = world.getObject("coin5");
      coin6 = world.getObject("coin6");
      coin7 = world.getObject("coin7");
-
-
+     comb1 = world.getObject("comb1")
      mushroom4 = world.getObject("mushroom4");
      mushroom = world.getObject("mushroom");
      princess = world.getObject("mushroom5");
@@ -231,6 +250,14 @@ function ready(){
     coiny7.anchor.x = 0.5;
     coiny7.anchor.y = .3;
 
+
+    j = PIXI.Texture.fromImage("comb.png");
+    //princess sprite
+    comb=new PIXI.Sprite(j);
+    comb.position.x=comb1.x;
+    comb.position.y=comb1.y;
+    comb.anchor.x = 0.5;
+    comb.anchor.y = .3;
 
     r = PIXI.Texture.fromImage("mushroom1.png");
     //princess sprite
@@ -307,6 +334,145 @@ function ready(){
     mush9.position.y=mushroom9.y;
     mush9.anchor.x = 0.5;
     mush9.anchor.y = .3;
+    mush9.rotation = 3;
+
+    q5= PIXI.Texture.fromImage("mushroom1.png");
+    mush10= new PIXI.Sprite(q);
+    mush10.position.x=mushroom10.x;
+    mush10.position.y=mushroom10.y;
+    mush10.anchor.x = 0.5;
+    mush10.anchor.y = .3;
+    mush10.rotation = 3;
+
+    q6= PIXI.Texture.fromImage("mushroom1.png");
+    mush11= new PIXI.Sprite(q);
+    mush11.position.x=mushroom11.x;
+    mush11.position.y=mushroom11.y;
+    mush11.anchor.x = 0.5;
+    mush11.anchor.y = .3;
+    mush11.rotation = 3;
+
+    q7= PIXI.Texture.fromImage("mushroom1.png");
+    mush12= new PIXI.Sprite(q);
+    mush12.position.x=mushroom12.x;
+    mush12.position.y=mushroom12.y;
+    mush12.anchor.x = 0.5;
+    mush12.anchor.y = .3;
+    mush12.rotation = 3;
+
+    q8= PIXI.Texture.fromImage("mushroom1.png");
+    mush13= new PIXI.Sprite(q);
+    mush13.position.x=mushroom13.x;
+    mush13.position.y=mushroom13.y;
+    mush13.anchor.x = 0.5;
+    mush13.anchor.y = .3;
+    mush13.rotation = 3;
+
+
+    q9= PIXI.Texture.fromImage("mushroom1.png");
+    mush14= new PIXI.Sprite(q);
+    mush14.position.x=mushroom14.x;
+    mush14.position.y=mushroom14.y;
+    mush14.anchor.x = 0.5;
+    mush14.anchor.y = .3;
+    mush14.rotation = 3;
+
+
+    q10= PIXI.Texture.fromImage("mushroom1.png");
+    mush15= new PIXI.Sprite(q);
+    mush15.position.x=mushroom15.x;
+    mush15.position.y=mushroom15.y;
+    mush15.anchor.x = 0.5;
+    mush15.anchor.y = .3;
+    mush15.rotation = 3;
+
+    q11= PIXI.Texture.fromImage("mushroom1.png");
+    mush16= new PIXI.Sprite(q);
+    mush16.position.x=mushroom16.x;
+    mush16.position.y=mushroom16.y;
+    mush16.anchor.x = 0.5;
+    mush16.anchor.y = .3;
+    mush16.rotation = 3;
+
+    q12= PIXI.Texture.fromImage("mushroom1.png");
+    mush17= new PIXI.Sprite(q);
+    mush17.position.x=mushroom17.x;
+    mush17.position.y=mushroom17.y;
+    mush17.anchor.x = 0.5;
+    mush17.anchor.y = .3;
+    mush17.rotation = 3;
+
+    q13= PIXI.Texture.fromImage("mushroom1.png");
+    mush18= new PIXI.Sprite(q);
+    mush18.position.x=mushroom18.x;
+    mush18.position.y=mushroom18.y;
+    mush18.anchor.x = 0.5;
+    mush18.anchor.y = .3;
+    mush18.rotation = 3;
+
+    q14= PIXI.Texture.fromImage("mushroom1.png");
+    mush19= new PIXI.Sprite(q);
+    mush19.position.x=mushroom19.x;
+    mush19.position.y=mushroom19.y;
+    mush19.anchor.x = 0.5;
+    mush19.anchor.y = .3;
+    mush19.rotation = 3;
+
+    q15= PIXI.Texture.fromImage("mushroom1.png");
+    mush20= new PIXI.Sprite(q);
+    mush20.position.x=mushroom20.x;
+    mush20.position.y=mushroom20.y;
+    mush20.anchor.x = 0.5;
+    mush20.anchor.y = .3;
+    mush20.rotation = 3;
+
+    q16= PIXI.Texture.fromImage("mushroom1.png");
+    mush21= new PIXI.Sprite(q);
+    mush21.position.x=mushroom21.x;
+    mush21.position.y=mushroom21.y;
+    mush21.anchor.x = 0.5;
+    mush21.anchor.y = .3;
+    mush21.rotation = 3;
+
+    q17= PIXI.Texture.fromImage("mushroom1.png");
+    mush22= new PIXI.Sprite(q);
+    mush22.position.x=mushroom22.x;
+    mush22.position.y=mushroom22.y;
+    mush22.anchor.x = 0.5;
+    mush22.anchor.y = .3;
+    mush22.rotation = 3;
+
+    q18= PIXI.Texture.fromImage("mushroom1.png");
+    mush23= new PIXI.Sprite(q);
+    mush23.position.x=mushroom23.x;
+    mush23.position.y=mushroom23.y;
+    mush23.anchor.x = 0.5;
+    mush23.anchor.y = .3;
+    mush23.rotation = 3;
+
+    q19= PIXI.Texture.fromImage("mushroom1.png");
+    mush24= new PIXI.Sprite(q);
+    mush24.position.x=mushroom24.x;
+    mush24.position.y=mushroom24.y;
+    mush24.anchor.x = 0.5;
+    mush24.anchor.y = .3;
+    mush24.rotation = 3;
+
+    q20= PIXI.Texture.fromImage("mushroom1.png");
+    mush25= new PIXI.Sprite(q);
+    mush25.position.x=mushroom25.x;
+    mush25.position.y=mushroom25.y;
+    mush25.anchor.x = 0.5;
+    mush25.anchor.y = .3;
+    mush25.rotation = 3;
+
+    q21= PIXI.Texture.fromImage("mushroom1.png");
+    mush26= new PIXI.Sprite(q);
+    mush26.position.x=mushroom26.x;
+    mush26.position.y=mushroom26.y;
+    mush26.anchor.x = 0.5;
+    mush26.anchor.y = .3;
+    mush26.rotation = 3;
 
 
     //main playable character
@@ -347,13 +513,30 @@ function ready(){
     entity_layer.addChild(coiny5)
     entity_layer.addChild(coiny6)
     entity_layer.addChild(coiny7)
+    entity_layer.addChild(comb)
     entity_layer.addChild(mush)
     entity_layer.addChild(mush6)
     entity_layer.addChild(mush7)
     entity_layer.addChild(mush8)
     entity_layer.addChild(mush9)
+    entity_layer.addChild(mush10)
+    entity_layer.addChild(mush11)
+    entity_layer.addChild(mush12)
+    entity_layer.addChild(mush13)
+    entity_layer.addChild(mush14)
+    entity_layer.addChild(mush15)
+    entity_layer.addChild(mush16)
+    entity_layer.addChild(mush17)
+    entity_layer.addChild(mush18)
+    entity_layer.addChild(mush19)
+    entity_layer.addChild(mush20)
+    entity_layer.addChild(mush21)
+    entity_layer.addChild(mush22)
+    entity_layer.addChild(mush23)
+    entity_layer.addChild(mush24)
+    entity_layer.addChild(mush25)
+    entity_layer.addChild(mush26)
     entity_layer.addChild(prin);
-
 
 
     animate();
@@ -409,7 +592,7 @@ document.addEventListener("keydown",function (e) {
         hithurt.play();
 
     }
-    if(Math.abs(blob.position.y-coiny.position.y)<15&& Math.abs(blob.position.x-coiny.position.x)<15&& (coiny.visible=1)) {
+    if(Math.abs(blob.position.y-coiny.position.y)<15&& Math.abs(blob.position.x-coiny.position.x)<15) {
         coinpick.play();
         coiny.visible=0;
     }
@@ -447,6 +630,15 @@ document.addEventListener("keydown",function (e) {
     if(Math.abs(blob.position.y-coiny7.position.y)<10&& Math.abs(blob.position.x-coiny7.position.x)<10) {
         coiny7.visible=0;
         coinpick.play();
+    }
+
+    if(Math.abs(blob.position.x-comb.position.x)<20) {
+        comb.visible=0;
+        Powerup.play();
+    }
+    if(Math.abs(blob.position.x-boss.position.x)<20) {
+        boss.visible=0;
+        mushroomdeath.play();
     }
 
 
