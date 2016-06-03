@@ -16,36 +16,10 @@ var endLose = new PIXI.Container();
 endWin.visible=0;
 endLose.visible=0;
 
-
-var gameTitle = new PIXI.Text("Project 4: Final\nGreasers & Mushrooms\n They're back and mushroomier than ever");
-gameTitle.anchor.x=.5;
-gameTitle.anchor.y=.5;
-gameTitle.position.x=360;
-gameTitle.position.y=100;
-titlescreen.addChild(gameTitle);
-titlescreen.visible=1;
-var title = new PIXI.Text("Click Here If You Wish To Play");
-title.position.x=360;
-title.position.y=200;
-title.anchor.x=.5;
-title.anchor.y=.5;
-title.interactive=true;
-title.on('mousedown',mousehandler);
-function mousehandler(){
-    world.visible=1;
-    titlescreen.visible=0;
-    startingsound.play();
-
-}
-titlescreen.addChild(title);
-
-stage.addChild(titlescreen);
-
-
 var loseText = new PIXI.Text("You Lose!");
 loseText.anchor.x=.5;
 loseText.anchor.y=.5;
-loseText.position.x=360;
+loseText.position.x=stage.x+100;
 loseText.position.y=200;
 var playAgain = new PIXI.Text("Play Again?");
 playAgain.anchor.x=.5;
@@ -105,6 +79,8 @@ PIXI.loader
     .add("coinpick.wav")
     .add("Powerup.wav")
     .add("mushroomdeath.wav")
+    .add('myfont.fnt')
+    .add("Blip_Select.wav")
     .load(ready);
 var frames=[];
 var frames2=[];
@@ -136,6 +112,119 @@ function ready(){
     coinpick =PIXI.audioManager.getAudio("coinpick.wav");
     Powerup =PIXI.audioManager.getAudio("Powerup.wav");
     mushroomdeath =PIXI.audioManager.getAudio("mushroomdeath.wav");
+    blipselect =PIXI.audioManager.getAudio("Blip_Select.wav");
+
+
+////////////////////////////creating game titles, tutorial, and credits//////////////////
+
+    var gameTitle = new PIXI.Text("Greasers and Mushrooms", {font:"40px myfont"});
+    gameTitle.anchor.x=.5;
+    gameTitle.anchor.y=.5;
+    gameTitle.position.x=360;
+    gameTitle.position.y=100;
+    titlescreen.addChild(gameTitle);
+    titlescreen.visible=1;
+
+    var title = new PIXI.Text("Play", {font:"32px myfont"});
+    title.visible=1;
+    title.position.x=180;
+    title.position.y=200;
+    title.anchor.x=.5;
+    title.anchor.y=.5;
+    title.interactive=true;
+    title.on('mousedown',mousehandler);
+    titlescreen.addChild(title);
+    title.visible=1;
+    function mousehandler(){
+        world.visible=1;
+        titlescreen.visible=0;
+        startingsound.play();
+        blob.play();
+
+    }
+
+
+    var title1 = new PIXI.Text("Credits", {font:"32px myfont"});
+    title1.position.x=200;
+    title1.position.y=300;
+    title1.anchor.x=.5;
+    title1.anchor.y=.5;
+    title1.interactive=true;
+    title1.on('mousedown',mouseHandler1);
+    titlescreen.addChild(title1);
+    stage.addChild(titlescreen);
+
+    function mouseHandler1(){
+      gameTitle.visible=0;
+    	title.visible=0;
+    	title1.visible=0;
+    	title2.visible=0;
+    	credits.visible=1;
+      blipselect.play();
+    }
+    var title2 = new PIXI.Text("Tutorial", {font:"32px myfont"});
+    title2.position.x=200;
+    title2.position.y=250;
+    title2.anchor.x=.5;
+    title2.anchor.y=.5;
+    title2.interactive=true;
+    title2.on('mousedown',mouseHandler2);
+    titlescreen.addChild(title2);
+    stage.addChild(titlescreen);
+
+    function mouseHandler2(){
+      gameTitle.visible=0;
+    	title.visible=0;
+    	title1.visible=0;
+    	title2.visible=0;
+    	tutorial.visible=1;
+      blipselect.play();
+    }
+
+    var credits = new PIXI.Text("Hayden Aupperle\n and \n I dunno",{font:"32px myfont"});
+    credits.visible=0;
+    credits.position.x=200;
+    credits.position.y=200;
+    credits.anchor.x=.5;
+    credits.anchor.y=.5;
+    credits.interactive=true;
+    credits.on('mousedown',mouseHandler3);
+    titlescreen.addChild(credits);
+    stage.addChild(titlescreen);
+
+    function mouseHandler3(){
+      gameTitle.visible=1;
+    	title.visible=1;
+    	title1.visible=1;
+    	title2.visible=1;
+    	credits.visible=0;
+      blipselect.play();
+
+    }
+
+    var tutorial = new PIXI.Text("Collect Coins and the Items of a Greaser\nAVOID SMALL RED MUSHROOMS\n\nA moves the greaser left\nD moves the greaser Right\nW makes the greaser jump\nM will reload the game\n\nOnce you have collected all of the greaser items\nYou will be able to kill the final boss by walking into it\n\nNOTE:Holding W or pressing it multiple times while \nover a mushroom will cause the game to crash\n\nNOTE:The jumping is still iffy so be careful while jumping", {font:"20px myfont"});
+    tutorial.visible=0;
+    tutorial.position.x=300;
+    tutorial.position.y=200;
+    tutorial.anchor.x=.5;
+    tutorial.anchor.y=.5;
+    tutorial.interactive=true;
+    tutorial.on('mousedown',mouseHandler4);
+    titlescreen.addChild(tutorial);
+    stage.addChild(titlescreen);
+
+    function mouseHandler4(){
+      gameTitle.visible=1;
+    	title.visible=1;
+    	title1.visible=1;
+    	title2.visible=1;
+    	tutorial.visible=0;
+      blipselect.play();
+    }
+/////////////////////////////////////////////////////////////////////////////////////////////
+function restartgame(){
+  location.reload();
+}
     for (i=1;i<=6;i++){
         frames.push(PIXI.Texture.fromFrame("runner"+i+".png"));
 
@@ -188,6 +277,10 @@ function ready(){
      coin5 = world.getObject("coin5");
      coin6 = world.getObject("coin6");
      coin7 = world.getObject("coin7");
+     coin8 = world.getObject("coin8");
+     coin9 = world.getObject("coin9");
+     coin10 = world.getObject("coin10");
+     coin11 = world.getObject("coin11");
      comb1 = world.getObject("comb1");
      comb2 = world.getObject("comb2");
      gel1 = world.getObject("gel1");
@@ -203,6 +296,8 @@ function ready(){
      check3 = world.getObject("check3");
      check4 = world.getObject("check4");
      check5 = world.getObject("check5");
+     youwin1 = world.getObject("youwin");
+     again1 = world.getObject("again");
      mushroom4 = world.getObject("mushroom4");
      mushroom = world.getObject("mushroom");
      princess = world.getObject("mushroom5");
@@ -277,6 +372,34 @@ function ready(){
     coiny7.position.y=coin7.y;
     coiny7.anchor.x = 0.5;
     coiny7.anchor.y = .3;
+
+    b8 = PIXI.Texture.fromImage("coin.png");
+    coiny8 = new PIXI.Sprite(b);
+    coiny8.position.x=coin8.x;
+    coiny8.position.y=coin8.y;
+    coiny8.anchor.x = 0.5;
+    coiny8.anchor.y = .3;
+
+    b9 = PIXI.Texture.fromImage("coin.png");
+    coiny9 = new PIXI.Sprite(b);
+    coiny9.position.x=coin9.x;
+    coiny9.position.y=coin9.y;
+    coiny9.anchor.x = 0.5;
+    coiny9.anchor.y = .3;
+
+    b10 = PIXI.Texture.fromImage("coin.png");
+    coiny10 = new PIXI.Sprite(b);
+    coiny10.position.x=coin10.x;
+    coiny10.position.y=coin10.y;
+    coiny10.anchor.x = 0.5;
+    coiny10.anchor.y = .3;
+
+    b11 = PIXI.Texture.fromImage("coin.png");
+    coiny11 = new PIXI.Sprite(b);
+    coiny11.position.x=coin11.x;
+    coiny11.position.y=coin11.y;
+    coiny11.anchor.x = 0.5;
+    coiny11.anchor.y = .3;
 ////////////////////////////////////////////////////////
 
 /////////////////////////////////////creates items
@@ -441,6 +564,28 @@ function ready(){
     boss.anchor.x = 0.5;
     boss.anchor.y = .3;
 
+/////////////////////////////////////////////////
+///////////////you win/////////
+
+    l = PIXI.Texture.fromImage("youwin.png");
+    youwiny = new PIXI.Sprite(l);
+    youwiny.visible=0;
+    youwiny.position.x=youwin1.x;
+    youwiny.position.y=youwin1.y;
+    youwiny.anchor.x = 0.5;
+    youwiny.anchor.y = .3;
+
+    l1 = PIXI.Texture.fromImage("again.png");
+    againy = new PIXI.Sprite(l1);
+    againy.visible=0;
+    againy.position.x=again1.x;
+    againy.position.y=again1.y;
+    againy.anchor.x = 0.5;
+    againy.anchor.y = .3;
+    againy.interactive=true;
+    againy.on('mousedown',restartgame);
+
+
 /////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////creates more mushrooms
@@ -488,7 +633,6 @@ function ready(){
     mush10.position.y=mushroom10.y;
     mush10.anchor.x = 0.5;
     mush10.anchor.y = .3;
-    mush10.rotation = 3;
 
     q6= PIXI.Texture.fromImage("mushroom1.png");
     mush11= new PIXI.Sprite(q);
@@ -496,7 +640,6 @@ function ready(){
     mush11.position.y=mushroom11.y;
     mush11.anchor.x = 0.5;
     mush11.anchor.y = .3;
-    mush11.rotation = 3;
 
     q7= PIXI.Texture.fromImage("mushroom1.png");
     mush12= new PIXI.Sprite(q);
@@ -504,7 +647,6 @@ function ready(){
     mush12.position.y=mushroom12.y;
     mush12.anchor.x = 0.5;
     mush12.anchor.y = .3;
-    mush12.rotation = 3;
 
     q8= PIXI.Texture.fromImage("mushroom1.png");
     mush13= new PIXI.Sprite(q);
@@ -610,7 +752,6 @@ function ready(){
     mush25.position.y=mushroom25.y;
     mush25.anchor.x = 0.5;
     mush25.anchor.y = .3;
-    mush25.rotation = 3;
 
     q21= PIXI.Texture.fromImage("mushroom1.png");
     mush26= new PIXI.Sprite(q);
@@ -618,7 +759,6 @@ function ready(){
     mush26.position.y=mushroom26.y;
     mush26.anchor.x = 0.5;
     mush26.anchor.y = .3;
-    mush26.rotation = 3;
 
     q22= PIXI.Texture.fromImage("mushroom1.png");
     mush27= new PIXI.Sprite(q);
@@ -714,6 +854,10 @@ function ready(){
     entity_layer.addChild(coiny5)
     entity_layer.addChild(coiny6)
     entity_layer.addChild(coiny7)
+    entity_layer.addChild(coiny8)
+    entity_layer.addChild(coiny9)
+    entity_layer.addChild(coiny10)
+    entity_layer.addChild(coiny11)
     entity_layer.addChild(comb)
     entity_layer.addChild(comb1)
     entity_layer.addChild(gely)
@@ -758,7 +902,8 @@ function ready(){
     entity_layer.addChild(mush32)
     entity_layer.addChild(mush33)
     entity_layer.addChild(mush34)
-
+    entity_layer.addChild(youwiny)
+    entity_layer.addChild(againy)
     entity_layer.addChild(prin);
 
 
@@ -783,8 +928,10 @@ document.addEventListener("keyup",function (e){
 document.addEventListener("keydown",function (e) {
     if(Math.abs(blob.position.x-castley.position.x)<30){
         endingsound.play();
-        endWin.visible=1;
-        world.visible=0;
+        youwiny.visible=1;
+        againy.visible=1;
+        world.visible=1;
+        blob.pause();
 
 
 
@@ -797,6 +944,7 @@ if(Math.abs(blob.position.x-mush2.position.x)<15) {
     loseText.visible=1;
     playAgain.visible=1;
     hithurt.play();
+    blob.pause();
 
 }
 if(Math.abs(blob.position.x-mush.position.x)<15) {
@@ -804,6 +952,7 @@ if(Math.abs(blob.position.x-mush.position.x)<15) {
     loseText.visible=1;
     playAgain.visible=1;
     hithurt.play();
+    blob.pause();
 
 }
 if(Math.abs(blob.position.x-prin.position.x)<15) {
@@ -811,6 +960,8 @@ if(Math.abs(blob.position.x-prin.position.x)<15) {
     loseText.visible=1;
     playAgain.visible=1;
     hithurt.play();
+    blob.pause();
+
 }
 
 if(Math.abs(blob.position.x-mush3.position.x)<15) {
@@ -818,9 +969,154 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
     loseText.visible=1;
     playAgain.visible=1;
     hithurt.play();
+    blob.pause();
 
   }
 
+  if(Math.abs(blob.position.x-mush1.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+      blob.pause();
+
+  }
+  if(Math.abs(blob.position.x-mush4.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+      blob.pause();
+
+  }
+  if(Math.abs(blob.position.x-mush6.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+      blob.pause();
+
+  }
+
+  if(Math.abs(blob.position.x-mush7.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+      blob.pause();
+
+    }
+
+    if(Math.abs(blob.position.x-mush8.position.x)<15) {
+        world.visible=0;
+        loseText.visible=1;
+        playAgain.visible=1;
+        hithurt.play();
+        blob.pause();
+
+    }
+    if(Math.abs(blob.position.x-mush10.position.x)<15) {
+        world.visible=0;
+        loseText.visible=1;
+        playAgain.visible=1;
+        hithurt.play();
+        blob.pause();
+
+    }
+    if(Math.abs(blob.position.x-mush11.position.x)<15) {
+        world.visible=0;
+        loseText.visible=1;
+        playAgain.visible=1;
+        hithurt.play();
+        blob.pause();
+
+    }
+
+    if(Math.abs(blob.position.x-mush12.position.x)<15) {
+        world.visible=0;
+        loseText.visible=1;
+        playAgain.visible=1;
+        hithurt.play();
+        blob.pause();
+
+      }
+      if(Math.abs(blob.position.x-mush25.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+          blob.pause();
+
+      }
+      if(Math.abs(blob.position.x-mush26.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+          blob.pause();
+
+      }
+
+      if(Math.abs(blob.position.x-mush27.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+          blob.pause();
+
+      }
+
+      if(Math.abs(blob.position.x-mush28.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+          blob.pause();
+          }
+
+          if(Math.abs(blob.position.x-mush29.position.x)<15) {
+              world.visible=0;
+              loseText.visible=1;
+              playAgain.visible=1;
+              hithurt.play();
+              blob.pause();
+
+          }
+
+
+          if(Math.abs(blob.position.x-mush30.position.x)<15) {
+              world.visible=0;
+              loseText.visible=1;
+              playAgain.visible=1;
+              hithurt.play();
+              blob.pause();
+
+          }
+
+          if(Math.abs(blob.position.x-mush32.position.x)<15) {
+              world.visible=0;
+              loseText.visible=1;
+              playAgain.visible=1;
+              hithurt.play();
+              blob.pause();
+
+              }
+              if(Math.abs(blob.position.x-mush33.position.x)<15) {
+                  world.visible=0;
+                  loseText.visible=1;
+                  playAgain.visible=1;
+                  hithurt.play();
+                  blob.pause();
+
+              }
+
+              if(Math.abs(blob.position.x-mush34.position.x)<15) {
+                  world.visible=0;
+                  loseText.visible=1;
+                  playAgain.visible=1;
+                  hithurt.play();
+                  blob.pause();
+                }
 
 ///////////////////////////collisions for coins
 
@@ -861,6 +1157,26 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
     if(Math.abs(blob.position.y-coiny7.position.y)<10&& Math.abs(blob.position.x-coiny7.position.x)<10) {
         coiny7.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny8.position.y)<10&& Math.abs(blob.position.x-coiny8.position.x)<10) {
+        coiny8.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny9.position.y)<10&& Math.abs(blob.position.x-coiny9.position.x)<10) {
+        coiny9.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny10.position.y)<10&& Math.abs(blob.position.x-coiny10.position.x)<10) {
+        coiny10.visible=0;
+        coinpick.play();
+    }
+
+    if(Math.abs(blob.position.y-coiny11.position.y)<10&& Math.abs(blob.position.x-coiny11.position.x)<10) {
+        coiny11.visible=0;
         coinpick.play();
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -967,6 +1283,9 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
             }
             moving_right = true;
             createjs.Tween.get(blob.position).to({x: blob.x + 24}, 500)
+        }
+        if (e.keyCode == 77) {
+          location.reload();
         }
 
 
