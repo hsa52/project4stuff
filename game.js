@@ -11,59 +11,7 @@ var stage = new PIXI.Container();
 stage.scale.x = GAME_SCALE;
 stage.scale.y = GAME_SCALE;
 var titlescreen = new PIXI.Container();
-var endWin = new PIXI.Container();
-var endLose = new PIXI.Container();
-endWin.visible=0;
-endLose.visible=0;
 
-var loseText = new PIXI.Text("You Lose!");
-loseText.anchor.x=.5;
-loseText.anchor.y=.5;
-loseText.position.x=stage.x+100;
-loseText.position.y=200;
-var playAgain = new PIXI.Text("Play Again?");
-playAgain.anchor.x=.5;
-playAgain.anchor.y=.5;
-playAgain.position.x=360;
-playAgain.position.y=300;
-playAgain.interactive=true;
-playAgain.on('mousedown',startNewGame2);
-function startNewGame2(){
-    world.visible=1;
-    endLose.visible=0;
-    endWin.visible=0;
-    prin.visible=1;
-
-
-}
-endLose.addChild(loseText);
-endLose.addChild(playAgain);
-stage.addChild(endLose);
-
-
-
-var winText= new PIXI.Text("You Win!");
-winText.anchor.x=.5;
-winText.anchor.y=.5;
-winText.position.x=360;
-winText.position.y=200;
-var playAgain2 = new PIXI.Text("Play Again?");
-playAgain2.anchor.x=.5;
-playAgain2.anchor.y=.5;
-playAgain2.position.x=360;
-playAgain2.position.y=300;
-playAgain2.interactive=true;
-playAgain2.on('mousedown',startNewGame);
-function startNewGame(){
-
-    world.visible=1;
-    endLose.visible=0;
-    endWin.visible=0;
-    prin.visible=1;
-}
-endWin.addChild(winText);
-endWin.addChild(playAgain2);
-stage.addChild(endWin);
 
 PIXI.SCALE_MODES.DEFAULT = PIXI.SCALE_MODES.NEAREST;
 PIXI.loader
@@ -941,24 +889,18 @@ document.addEventListener("keydown",function (e) {
 
 if(Math.abs(blob.position.x-mush2.position.x)<15) {
     world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
     hithurt.play();
     blob.pause();
 
 }
 if(Math.abs(blob.position.x-mush.position.x)<15) {
     world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
     hithurt.play();
     blob.pause();
 
 }
 if(Math.abs(blob.position.x-prin.position.x)<15) {
     world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
     hithurt.play();
     blob.pause();
 
@@ -966,8 +908,6 @@ if(Math.abs(blob.position.x-prin.position.x)<15) {
 
 if(Math.abs(blob.position.x-mush3.position.x)<15) {
     world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
     hithurt.play();
     blob.pause();
 
@@ -975,24 +915,18 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
   if(Math.abs(blob.position.x-mush1.position.x)<15) {
       world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
       hithurt.play();
       blob.pause();
 
   }
   if(Math.abs(blob.position.x-mush4.position.x)<15) {
       world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
       hithurt.play();
       blob.pause();
 
   }
   if(Math.abs(blob.position.x-mush6.position.x)<15) {
       world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
       hithurt.play();
       blob.pause();
 
@@ -1000,8 +934,6 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
   if(Math.abs(blob.position.x-mush7.position.x)<15) {
       world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
       hithurt.play();
       blob.pause();
 
@@ -1009,24 +941,18 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
     if(Math.abs(blob.position.x-mush8.position.x)<15) {
         world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
         hithurt.play();
         blob.pause();
 
     }
     if(Math.abs(blob.position.x-mush10.position.x)<15) {
         world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
         hithurt.play();
         blob.pause();
 
     }
     if(Math.abs(blob.position.x-mush11.position.x)<15) {
         world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
         hithurt.play();
         blob.pause();
 
@@ -1034,24 +960,18 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
     if(Math.abs(blob.position.x-mush12.position.x)<15) {
         world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
         hithurt.play();
         blob.pause();
 
       }
       if(Math.abs(blob.position.x-mush25.position.x)<15) {
           world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
           hithurt.play();
           blob.pause();
 
       }
       if(Math.abs(blob.position.x-mush26.position.x)<15) {
           world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
           hithurt.play();
           blob.pause();
 
@@ -1059,8 +979,6 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
       if(Math.abs(blob.position.x-mush27.position.x)<15) {
           world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
           hithurt.play();
           blob.pause();
 
@@ -1068,16 +986,12 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
       if(Math.abs(blob.position.x-mush28.position.x)<15) {
           world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
           hithurt.play();
           blob.pause();
           }
 
           if(Math.abs(blob.position.x-mush29.position.x)<15) {
               world.visible=0;
-              loseText.visible=1;
-              playAgain.visible=1;
               hithurt.play();
               blob.pause();
 
@@ -1086,8 +1000,6 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
           if(Math.abs(blob.position.x-mush30.position.x)<15) {
               world.visible=0;
-              loseText.visible=1;
-              playAgain.visible=1;
               hithurt.play();
               blob.pause();
 
@@ -1095,16 +1007,12 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
           if(Math.abs(blob.position.x-mush32.position.x)<15) {
               world.visible=0;
-              loseText.visible=1;
-              playAgain.visible=1;
               hithurt.play();
               blob.pause();
 
               }
               if(Math.abs(blob.position.x-mush33.position.x)<15) {
                   world.visible=0;
-                  loseText.visible=1;
-                  playAgain.visible=1;
                   hithurt.play();
                   blob.pause();
 
@@ -1112,8 +1020,6 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
               if(Math.abs(blob.position.x-mush34.position.x)<15) {
                   world.visible=0;
-                  loseText.visible=1;
-                  playAgain.visible=1;
                   hithurt.play();
                   blob.pause();
                 }
