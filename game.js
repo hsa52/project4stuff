@@ -252,6 +252,7 @@ function restartgame(){
      check5 = world.getObject("check5");
      youwin1 = world.getObject("youwin");
      again1 = world.getObject("again");
+     thumbup1 = world.getObject("thumbup");
      mushroom4 = world.getObject("mushroom4");
      mushroom = world.getObject("mushroom");
      princess = world.getObject("mushroom5");
@@ -350,7 +351,6 @@ function restartgame(){
     coiny11.anchor.y = .3;
 ////////////////////////////////////////////////////////
 /////////////////////////////////////creates greaser items/////////////////////////
-
     j = PIXI.Texture.fromImage("comb.png");
     comb=new PIXI.Sprite(j);
     comb.position.x=comb1.x;
@@ -420,6 +420,14 @@ function restartgame(){
     dollay2.position.y=dolla2.y;
     dollay2.anchor.x = 0.5;
     dollay2.anchor.y = .3;
+
+    w3 = PIXI.Texture.fromImage("thumbup.png");
+    thumbupy = new PIXI.Sprite(w3);
+    thumbupy.visible=0;
+    thumbupy.position.x=thumbup1.x;
+    thumbupy.position.y=thumbup1.y;
+    thumbupy.anchor.x = 0.5;
+    thumbupy.anchor.y = .3;
 ////////////////////////////////////////////////////////////
 /////////////creates check marks//////////////////////////////
     z = PIXI.Texture.fromImage("check.png");
@@ -825,6 +833,7 @@ function restartgame(){
     entity_layer.addChild(mush34)
     entity_layer.addChild(youwiny)
     entity_layer.addChild(againy)
+    entity_layer.addChild(thumbupy)
     entity_layer.addChild(prin);
     animate();
 }
@@ -1042,6 +1051,7 @@ if(Math.abs(blob.position.x-dollay1.position.x)<20) {
 ///////////////creates collisions for greaser and evil mushroom////////////////////////////
 if(Math.abs(blob.position.x-boss.position.x)<20) {
     boss.visible=0;
+    thumbupy.visible=1;
     mushroomdeath.play();
   }
 //////////////////////////////////////////////////////////////////////////////////
