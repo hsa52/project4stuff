@@ -181,18 +181,27 @@ function ready(){
      coin5 = world.getObject("coin5");
      coin6 = world.getObject("coin6");
      coin7 = world.getObject("coin7");
-     comb1 = world.getObject("comb1")
+     comb1 = world.getObject("comb1");
+     gel1 = world.getObject("gel1");
+     shades1 = world.getObject("shades1");
      mushroom4 = world.getObject("mushroom4");
      mushroom = world.getObject("mushroom");
      princess = world.getObject("mushroom5");
 
+
+///////////////////////////////creates a mushroom
+
+
     v = PIXI.Texture.fromImage("mushroom1.png");
-    //princess sprite
     prin=new PIXI.Sprite(v);
     prin.position.x=princess.x;
     prin.position.y=princess.y;
     prin.anchor.x = 0.5;
     prin.anchor.y = .3;
+
+///////////////////////////////////////////////
+
+///////////////////////////////////creates coins
 
     b = PIXI.Texture.fromImage("coin.png");
     coiny = new PIXI.Sprite(b);
@@ -249,18 +258,38 @@ function ready(){
     coiny7.position.y=coin7.y;
     coiny7.anchor.x = 0.5;
     coiny7.anchor.y = .3;
+////////////////////////////////////////////////////////
 
+/////////////////////////////////////creates items
 
     j = PIXI.Texture.fromImage("comb.png");
-    //princess sprite
     comb=new PIXI.Sprite(j);
     comb.position.x=comb1.x;
     comb.position.y=comb1.y;
     comb.anchor.x = 0.5;
     comb.anchor.y = .3;
 
+    d = PIXI.Texture.fromImage("gel.png");
+    gely = new PIXI.Sprite(d);
+    gely.position.x=gel1.x;
+    gely.position.y=gel1.y;
+    gely.anchor.x = 0.5;
+    gely.anchor.y = .3;
+
+    h = PIXI.Texture.fromImage("shades.png");
+    shady1 = new PIXI.Sprite(h);
+    shady1.position.x=shades1.x;
+    shady1.position.y=shades1.y;
+    shady1.anchor.x = 0.5;
+    shady1.anchor.y = .3;
+
+
+//////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////some mushrooms
+
+
     r = PIXI.Texture.fromImage("mushroom1.png");
-    //princess sprite
     mush3=new PIXI.Sprite(v);
     mush3.position.x=mushroom3.x;
     mush3.position.y=mushroom3.y;
@@ -268,7 +297,6 @@ function ready(){
     mush3.anchor.y = .3;
 
     o = PIXI.Texture.fromImage("mushroom1.png");
-    //princess sprite
     mush4=new PIXI.Sprite(v);
     mush4.position.x=mushroom4.x;
     mush4.position.y=mushroom4.y;
@@ -276,7 +304,6 @@ function ready(){
     mush4.anchor.y = .3;
 
 
-    //evil boyyfriend object
     f= PIXI.Texture.fromImage("mushroom1.png");
     mush2= new PIXI.Sprite(f);
     mush2.position.x=mushroom2.x;
@@ -290,7 +317,9 @@ function ready(){
     mush1.position.y=mushroom1.y;
     mush1.anchor.x = 0.5;
     mush1.anchor.y = .3;
+/////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////creates the boss mushroom
 
     k = PIXI.Texture.fromImage("boss.png");
     boss = new PIXI.Sprite(k);
@@ -298,6 +327,10 @@ function ready(){
     boss.position.y=boss1.y;
     boss.anchor.x = 0.5;
     boss.anchor.y = .3;
+
+/////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////creates more mushrooms
 
 
     q= PIXI.Texture.fromImage("mushroom1.png");
@@ -474,8 +507,11 @@ function ready(){
     mush26.anchor.y = .3;
     mush26.rotation = 3;
 
+////////////////////////////////////////////////////////////////////////////
 
-    //main playable character
+
+///////////////////////////creates the main greaser
+
     blob = new PIXI.extras.MovieClip(frames);
     blob.scale.y=1;
     blob.scale.x=1;
@@ -484,8 +520,10 @@ function ready(){
     blob.position.x=start.x;
     blob.position.y=start.y;
     blob.animationSpeed=.1;
+///////////////////////////////////////////////////////////////////////////
 
-    //castle to return princess to
+/////////////////////creates the finish image
+
     var c = PIXI.Texture.fromImage("finishline.png");
     castley = new PIXI.Sprite(c);
     castley.position.x=cast.x;
@@ -493,8 +531,9 @@ function ready(){
     castley.anchor.x = 0.5;
     castley.anchor.y = 0;
 
+/////////////////////////////////////////////////////////////////////////
 
-
+////////////////adds the objects to the game
 
     var entity_layer= world.getObject("Entities");
     var building_layer = world.getObject("Buildings");
@@ -514,6 +553,8 @@ function ready(){
     entity_layer.addChild(coiny6)
     entity_layer.addChild(coiny7)
     entity_layer.addChild(comb)
+    entity_layer.addChild(gely)
+    entity_layer.addChild(shady1)
     entity_layer.addChild(mush)
     entity_layer.addChild(mush6)
     entity_layer.addChild(mush7)
@@ -536,6 +577,7 @@ function ready(){
     entity_layer.addChild(mush24)
     entity_layer.addChild(mush25)
     entity_layer.addChild(mush26)
+
     entity_layer.addChild(prin);
 
 
@@ -563,33 +605,167 @@ document.addEventListener("keydown",function (e) {
         endWin.visible=1;
         world.visible=0;
 
+
+
+}
+//////////////////////////collisions with mushrooms
+
+
+if(Math.abs(blob.position.x-mush2.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+}
+if(Math.abs(blob.position.x-mush.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+}
+if(Math.abs(blob.position.x-prin.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+}
+
+if(Math.abs(blob.position.x-mush3.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+  }
+
+if(Math.abs(blob.position.x -mush10.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+}
+if(Math.abs(blob.position.x-mush11.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+
+
+if(Math.abs(blob.position.x-mush12.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+}
+if(Math.abs(blob.position.x-mush13.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+}
+if(Math.abs(blob.position.x-mush14.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+}
+
+if(Math.abs(blob.position.x-mush15.position.x)<15) {
+    world.visible=0;
+    loseText.visible=1;
+    playAgain.visible=1;
+    hithurt.play();
+
+  }
+  if(Math.abs(blob.position.x-mush16.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+
+
+  }
+  if(Math.abs(blob.position.x-mush17.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+
+  }
+  if(Math.abs(blob.position.x-mush18.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
+  }
+
+  if(Math.abs(blob.position.x-mush19.position.x)<15) {
+      world.visible=0;
+      loseText.visible=1;
+      playAgain.visible=1;
+      hithurt.play();
     }
-    if(Math.abs(blob.position.x-mush2.position.x)<15) {
+    if(Math.abs(blob.position.x-mush20.position.x)<15) {
         world.visible=0;
         loseText.visible=1;
         playAgain.visible=1;
         hithurt.play();
 
     }
-    if(Math.abs(blob.position.x-mush.position.x)<15) {
-        world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
-        hithurt.play();
-
-    }
-    if(Math.abs(blob.position.x-prin.position.x)<15) {
+    if(Math.abs(blob.position.x-mush21.position.x)<15) {
         world.visible=0;
         loseText.visible=1;
         playAgain.visible=1;
         hithurt.play();
     }
 
-    if(Math.abs(blob.position.x-mush3.position.x)<15) {
+    if(Math.abs(blob.position.x-mush22.position.x)<15) {
         world.visible=0;
         loseText.visible=1;
         playAgain.visible=1;
         hithurt.play();
+      }
+      if(Math.abs(blob.position.x-mush23.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+
+      }
+      if(Math.abs(blob.position.x-mush24.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+
+      }
+      if(Math.abs(blob.position.x-mush25.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+      }
+
+      if(Math.abs(blob.position.x-mush26.position.x)<15) {
+          world.visible=0;
+          loseText.visible=1;
+          playAgain.visible=1;
+          hithurt.play();
+        }
+
+
+
+
+
+
+
+///////////////////////////collisions for coins
 
     }
     if(Math.abs(blob.position.y-coiny.position.y)<15&& Math.abs(blob.position.x-coiny.position.x)<15) {
@@ -631,16 +807,35 @@ document.addEventListener("keydown",function (e) {
         coiny7.visible=0;
         coinpick.play();
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////// collisions for items
+
+
+    if(Math.abs(blob.position.x-gely.position.x)<20) {
+        gely.visible=0;
+        Powerup.play();
+    }
 
     if(Math.abs(blob.position.x-comb.position.x)<20) {
         comb.visible=0;
         Powerup.play();
     }
+
+    if(Math.abs(blob.position.x-shady1.position.x)<20) {
+        shady1.visible=0;
+        Powerup.play();
+    }
+
+///////////////////////////////////////////////////////////////////////////////////
+////////////////////////////creates collisions for evil mushroom
+
     if(Math.abs(blob.position.x-boss.position.x)<20) {
         boss.visible=0;
         mushroomdeath.play();
     }
 
+//////////////////////////////////////////////////////////////////////////////////
 
     if (blob.position.y==300) {
 
