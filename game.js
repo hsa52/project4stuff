@@ -172,6 +172,13 @@ function ready(){
      mushroom24 = world.getObject("mushroom24");
      mushroom25 = world.getObject("mushroom25");
      mushroom26 = world.getObject("mushroom26");
+     mushroom27 = world.getObject("mushroom27");
+     mushroom28 = world.getObject("mushroom28");
+     mushroom29 = world.getObject("mushroom29");
+     mushroom30 = world.getObject("mushroom30");
+     mushroom32 = world.getObject("mushroom32");
+     mushroom33 = world.getObject("mushroom33");
+     mushroom34 = world.getObject("mushroom34");
      boss1 = world.getObject("boss");
      coin = world.getObject("coin");
      coin1 = world.getObject("coin1");
@@ -182,8 +189,20 @@ function ready(){
      coin6 = world.getObject("coin6");
      coin7 = world.getObject("coin7");
      comb1 = world.getObject("comb1");
+     comb2 = world.getObject("comb2");
      gel1 = world.getObject("gel1");
+     gel2 = world.getObject("gel2");
+     pop1 = world.getObject("pop1");
+     pop2 = world.getObject("pop2");
      shades1 = world.getObject("shades1");
+     shades2 = world.getObject("shades2");
+     dolla1 = world.getObject("dolla1");
+     dolla2 = world.getObject("dolla2");
+     check1 = world.getObject("check1");
+     check2 = world.getObject("check2");
+     check3 = world.getObject("check3");
+     check4 = world.getObject("check4");
+     check5 = world.getObject("check5");
      mushroom4 = world.getObject("mushroom4");
      mushroom = world.getObject("mushroom");
      princess = world.getObject("mushroom5");
@@ -269,6 +288,13 @@ function ready(){
     comb.anchor.x = 0.5;
     comb.anchor.y = .3;
 
+    j1 = PIXI.Texture.fromImage("comb.png");
+    comb1=new PIXI.Sprite(j);
+    comb1.position.x=comb2.x;
+    comb1.position.y=comb2.y;
+    comb1.anchor.x = 0.5;
+    comb1.anchor.y = .3;
+
     d = PIXI.Texture.fromImage("gel.png");
     gely = new PIXI.Sprite(d);
     gely.position.x=gel1.x;
@@ -276,12 +302,97 @@ function ready(){
     gely.anchor.x = 0.5;
     gely.anchor.y = .3;
 
+    d1 = PIXI.Texture.fromImage("gel.png");
+    gely1 = new PIXI.Sprite(d);
+    gely1.position.x=gel2.x;
+    gely1.position.y=gel2.y;
+    gely1.anchor.x = 0.5;
+    gely1.anchor.y = .3;
+
     h = PIXI.Texture.fromImage("shades.png");
     shady1 = new PIXI.Sprite(h);
     shady1.position.x=shades1.x;
     shady1.position.y=shades1.y;
     shady1.anchor.x = 0.5;
     shady1.anchor.y = .3;
+
+    h1 = PIXI.Texture.fromImage("shades.png");
+    shady2 = new PIXI.Sprite(h);
+    shady2.position.x=shades2.x;
+    shady2.position.y=shades2.y;
+    shady2.anchor.x = 0.5;
+    shady2.anchor.y = .3;
+
+    s = PIXI.Texture.fromImage("pop.png");
+    popy1 = new PIXI.Sprite(s);
+    popy1.position.x=pop1.x;
+    popy1.position.y=pop1.y;
+    popy1.anchor.x = 0.5;
+    popy1.anchor.y = .3;
+
+    s1 = PIXI.Texture.fromImage("pop.png");
+    popy2 = new PIXI.Sprite(s);
+    popy2.position.x=pop2.x;
+    popy2.position.y=pop2.y;
+    popy2.anchor.x = 0.5;
+    popy2.anchor.y = .3;
+
+
+    w = PIXI.Texture.fromImage("dolla.png");
+    dollay1 = new PIXI.Sprite(w);
+    dollay1.position.x=dolla1.x;
+    dollay1.position.y=dolla1.y;
+    dollay1.anchor.x = 0.5;
+    dollay1.anchor.y = .3;
+
+    w1 = PIXI.Texture.fromImage("dolla.png");
+    dollay2 = new PIXI.Sprite(w);
+    dollay2.position.x=dolla2.x;
+    dollay2.position.y=dolla2.y;
+    dollay2.anchor.x = 0.5;
+    dollay2.anchor.y = .3;
+//////////////////////////////
+/////////////check marks
+
+    z = PIXI.Texture.fromImage("check.png");
+    checky1 = new PIXI.Sprite(z);
+    checky1.visible=0;
+    checky1.position.x=check1.x;
+    checky1.position.y=check1.y;
+    checky1.anchor.x = 0.5;
+    checky1.anchor.y = .3;
+
+    z1 = PIXI.Texture.fromImage("check.png");
+    checky2 = new PIXI.Sprite(z);
+    checky2.visible=0;
+    checky2.position.x=check2.x;
+    checky2.position.y=check2.y;
+    checky2.anchor.x = 0.5;
+    checky2.anchor.y = .3;
+
+    z2 = PIXI.Texture.fromImage("check.png");
+    checky3 = new PIXI.Sprite(z);
+    checky3.visible=0;
+    checky3.position.x=check3.x;
+    checky3.position.y=check3.y;
+    checky3.anchor.x = 0.5;
+    checky3.anchor.y = .3;
+
+    z3 = PIXI.Texture.fromImage("check.png");
+    checky4 = new PIXI.Sprite(z);
+    checky4.visible=0;
+    checky4.position.x=check4.x;
+    checky4.position.y=check4.y;
+    checky4.anchor.x = 0.5;
+    checky4.anchor.y = .3;
+
+    z4 = PIXI.Texture.fromImage("check.png");
+    checky5 = new PIXI.Sprite(z);
+    checky5.visible=0;
+    checky5.position.x=check5.x;
+    checky5.position.y=check5.y;
+    checky5.anchor.x = 0.5;
+    checky5.anchor.y = .3;
 
 
 //////////////////////////////////////////////////////////////////////
@@ -317,6 +428,8 @@ function ready(){
     mush1.position.y=mushroom1.y;
     mush1.anchor.x = 0.5;
     mush1.anchor.y = .3;
+
+
 /////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////creates the boss mushroom
@@ -507,6 +620,55 @@ function ready(){
     mush26.anchor.y = .3;
     mush26.rotation = 3;
 
+    q22= PIXI.Texture.fromImage("mushroom1.png");
+    mush27= new PIXI.Sprite(q);
+    mush27.position.x=mushroom27.x;
+    mush27.position.y=mushroom27.y;
+    mush27.anchor.x = 0.5;
+    mush27.anchor.y = .3;
+
+    q23= PIXI.Texture.fromImage("mushroom1.png");
+    mush28= new PIXI.Sprite(q);
+    mush28.position.x=mushroom28.x;
+    mush28.position.y=mushroom28.y;
+    mush28.anchor.x = 0.5;
+    mush28.anchor.y = .3;
+
+    q24= PIXI.Texture.fromImage("mushroom1.png");
+    mush29= new PIXI.Sprite(q);
+    mush29.position.x=mushroom29.x;
+    mush29.position.y=mushroom29.y;
+    mush29.anchor.x = 0.5;
+    mush29.anchor.y = .3;
+
+    q25= PIXI.Texture.fromImage("mushroom1.png");
+    mush30= new PIXI.Sprite(q);
+    mush30.position.x=mushroom30.x;
+    mush30.position.y=mushroom30.y;
+    mush30.anchor.x = 0.5;
+    mush30.anchor.y = .3;
+
+
+    q27= PIXI.Texture.fromImage("mushroom1.png");
+    mush32= new PIXI.Sprite(q);
+    mush32.position.x=mushroom32.x;
+    mush32.position.y=mushroom32.y;
+    mush32.anchor.x = 0.5;
+    mush32.anchor.y = .3;
+
+    q28= PIXI.Texture.fromImage("mushroom1.png");
+    mush33= new PIXI.Sprite(q);
+    mush33.position.x=mushroom33.x;
+    mush33.position.y=mushroom33.y;
+    mush33.anchor.x = 0.5;
+    mush33.anchor.y = .3;
+
+    q29= PIXI.Texture.fromImage("mushroom1.png");
+    mush34= new PIXI.Sprite(q);
+    mush34.position.x=mushroom34.x;
+    mush34.position.y=mushroom34.y;
+    mush34.anchor.x = 0.5;
+    mush34.anchor.y = .3;
 ////////////////////////////////////////////////////////////////////////////
 
 
@@ -553,8 +715,20 @@ function ready(){
     entity_layer.addChild(coiny6)
     entity_layer.addChild(coiny7)
     entity_layer.addChild(comb)
+    entity_layer.addChild(comb1)
     entity_layer.addChild(gely)
+    entity_layer.addChild(gely1)
+    entity_layer.addChild(popy1)
+    entity_layer.addChild(popy2)
     entity_layer.addChild(shady1)
+    entity_layer.addChild(shady2)
+    entity_layer.addChild(dollay1)
+    entity_layer.addChild(dollay2)
+    entity_layer.addChild(checky1)
+    entity_layer.addChild(checky2)
+    entity_layer.addChild(checky3)
+    entity_layer.addChild(checky4)
+    entity_layer.addChild(checky5)
     entity_layer.addChild(mush)
     entity_layer.addChild(mush6)
     entity_layer.addChild(mush7)
@@ -577,6 +751,13 @@ function ready(){
     entity_layer.addChild(mush24)
     entity_layer.addChild(mush25)
     entity_layer.addChild(mush26)
+    entity_layer.addChild(mush27)
+    entity_layer.addChild(mush28)
+    entity_layer.addChild(mush29)
+    entity_layer.addChild(mush30)
+    entity_layer.addChild(mush32)
+    entity_layer.addChild(mush33)
+    entity_layer.addChild(mush34)
 
     entity_layer.addChild(prin);
 
@@ -640,134 +821,9 @@ if(Math.abs(blob.position.x-mush3.position.x)<15) {
 
   }
 
-if(Math.abs(blob.position.x -mush10.position.x)<15) {
-    world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
-    hithurt.play();
-
-}
-if(Math.abs(blob.position.x-mush11.position.x)<15) {
-    world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
-    hithurt.play();
-
-
-
-if(Math.abs(blob.position.x-mush12.position.x)<15) {
-    world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
-    hithurt.play();
-
-}
-if(Math.abs(blob.position.x-mush13.position.x)<15) {
-    world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
-    hithurt.play();
-
-}
-if(Math.abs(blob.position.x-mush14.position.x)<15) {
-    world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
-    hithurt.play();
-}
-
-if(Math.abs(blob.position.x-mush15.position.x)<15) {
-    world.visible=0;
-    loseText.visible=1;
-    playAgain.visible=1;
-    hithurt.play();
-
-  }
-  if(Math.abs(blob.position.x-mush16.position.x)<15) {
-      world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
-      hithurt.play();
-
-
-  }
-  if(Math.abs(blob.position.x-mush17.position.x)<15) {
-      world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
-      hithurt.play();
-
-  }
-  if(Math.abs(blob.position.x-mush18.position.x)<15) {
-      world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
-      hithurt.play();
-  }
-
-  if(Math.abs(blob.position.x-mush19.position.x)<15) {
-      world.visible=0;
-      loseText.visible=1;
-      playAgain.visible=1;
-      hithurt.play();
-    }
-    if(Math.abs(blob.position.x-mush20.position.x)<15) {
-        world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
-        hithurt.play();
-
-    }
-    if(Math.abs(blob.position.x-mush21.position.x)<15) {
-        world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
-        hithurt.play();
-    }
-
-    if(Math.abs(blob.position.x-mush22.position.x)<15) {
-        world.visible=0;
-        loseText.visible=1;
-        playAgain.visible=1;
-        hithurt.play();
-      }
-      if(Math.abs(blob.position.x-mush23.position.x)<15) {
-          world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
-          hithurt.play();
-
-      }
-      if(Math.abs(blob.position.x-mush24.position.x)<15) {
-          world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
-          hithurt.play();
-
-      }
-      if(Math.abs(blob.position.x-mush25.position.x)<15) {
-          world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
-          hithurt.play();
-      }
-
-      if(Math.abs(blob.position.x-mush26.position.x)<15) {
-          world.visible=0;
-          loseText.visible=1;
-          playAgain.visible=1;
-          hithurt.play();
-        }
-
-
-
-
-
-
 
 ///////////////////////////collisions for coins
 
-    }
     if(Math.abs(blob.position.y-coiny.position.y)<15&& Math.abs(blob.position.x-coiny.position.x)<15) {
         coinpick.play();
         coiny.visible=0;
@@ -814,16 +870,31 @@ if(Math.abs(blob.position.x-mush15.position.x)<15) {
 
     if(Math.abs(blob.position.x-gely.position.x)<20) {
         gely.visible=0;
+        checky1.visible=1;
         Powerup.play();
     }
 
     if(Math.abs(blob.position.x-comb.position.x)<20) {
         comb.visible=0;
+        checky5.visible=1;
         Powerup.play();
     }
 
     if(Math.abs(blob.position.x-shady1.position.x)<20) {
         shady1.visible=0;
+        checky2.visible=1;
+        Powerup.play();
+    }
+
+    if(Math.abs(blob.position.x-popy1.position.x)<20) {
+        popy1.visible=0;
+        checky3.visible=1;
+        Powerup.play();
+    }
+
+    if(Math.abs(blob.position.x-dollay1.position.x)<20) {
+        dollay1.visible=0;
+        checky4.visible=1;
         Powerup.play();
     }
 
